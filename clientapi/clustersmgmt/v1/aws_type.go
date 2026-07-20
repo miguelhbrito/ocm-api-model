@@ -42,9 +42,9 @@ type AWS struct {
 	privateHostedZoneRoleARN               string
 	privateLinkConfiguration               *PrivateLinkClusterConfiguration
 	secretAccessKey                        string
-	spotTerminationHandlerQueueUrl         string
 	subnetIDs                              []string
 	tags                                   map[string]string
+	terminationHandlerQueueUrl             string
 	vpcEndpointRoleArn                     string
 	zeroEgress                             *ZeroEgress
 	privateLink                            bool
@@ -500,39 +500,12 @@ func (o *AWS) GetSecretAccessKey() (value string, ok bool) {
 	return
 }
 
-// SpotTerminationHandlerQueueUrl returns the value of the 'spot_termination_handler_queue_url' attribute, or
-// the zero value of the type if the attribute doesn't have a value.
-//
-// URL of the SQS queue used for graceful Spot instance interruption handling.
-// When set, HyperShift deploys the AWS Node Termination Handler in the hosted
-// control plane. Queue must be in the same region as the cluster.
-func (o *AWS) SpotTerminationHandlerQueueUrl() string {
-	if o != nil && len(o.fieldSet_) > 19 && o.fieldSet_[19] {
-		return o.spotTerminationHandlerQueueUrl
-	}
-	return ""
-}
-
-// GetSpotTerminationHandlerQueueUrl returns the value of the 'spot_termination_handler_queue_url' attribute and
-// a flag indicating if the attribute has a value.
-//
-// URL of the SQS queue used for graceful Spot instance interruption handling.
-// When set, HyperShift deploys the AWS Node Termination Handler in the hosted
-// control plane. Queue must be in the same region as the cluster.
-func (o *AWS) GetSpotTerminationHandlerQueueUrl() (value string, ok bool) {
-	ok = o != nil && len(o.fieldSet_) > 19 && o.fieldSet_[19]
-	if ok {
-		value = o.spotTerminationHandlerQueueUrl
-	}
-	return
-}
-
 // SubnetIDs returns the value of the 'subnet_IDs' attribute, or
 // the zero value of the type if the attribute doesn't have a value.
 //
 // The subnet ids to be used when installing the cluster.
 func (o *AWS) SubnetIDs() []string {
-	if o != nil && len(o.fieldSet_) > 20 && o.fieldSet_[20] {
+	if o != nil && len(o.fieldSet_) > 19 && o.fieldSet_[19] {
 		return o.subnetIDs
 	}
 	return nil
@@ -543,7 +516,7 @@ func (o *AWS) SubnetIDs() []string {
 //
 // The subnet ids to be used when installing the cluster.
 func (o *AWS) GetSubnetIDs() (value []string, ok bool) {
-	ok = o != nil && len(o.fieldSet_) > 20 && o.fieldSet_[20]
+	ok = o != nil && len(o.fieldSet_) > 19 && o.fieldSet_[19]
 	if ok {
 		value = o.subnetIDs
 	}
@@ -555,7 +528,7 @@ func (o *AWS) GetSubnetIDs() (value []string, ok bool) {
 //
 // Optional keys and values that the installer will add as tags to all AWS resources it creates
 func (o *AWS) Tags() map[string]string {
-	if o != nil && len(o.fieldSet_) > 21 && o.fieldSet_[21] {
+	if o != nil && len(o.fieldSet_) > 20 && o.fieldSet_[20] {
 		return o.tags
 	}
 	return nil
@@ -566,9 +539,36 @@ func (o *AWS) Tags() map[string]string {
 //
 // Optional keys and values that the installer will add as tags to all AWS resources it creates
 func (o *AWS) GetTags() (value map[string]string, ok bool) {
-	ok = o != nil && len(o.fieldSet_) > 21 && o.fieldSet_[21]
+	ok = o != nil && len(o.fieldSet_) > 20 && o.fieldSet_[20]
 	if ok {
 		value = o.tags
+	}
+	return
+}
+
+// TerminationHandlerQueueUrl returns the value of the 'termination_handler_queue_url' attribute, or
+// the zero value of the type if the attribute doesn't have a value.
+//
+// URL of the SQS queue used for graceful Spot instance interruption handling.
+// When set, HyperShift deploys the AWS Node Termination Handler in the hosted
+// control plane. Queue must be in the same region as the cluster.
+func (o *AWS) TerminationHandlerQueueUrl() string {
+	if o != nil && len(o.fieldSet_) > 21 && o.fieldSet_[21] {
+		return o.terminationHandlerQueueUrl
+	}
+	return ""
+}
+
+// GetTerminationHandlerQueueUrl returns the value of the 'termination_handler_queue_url' attribute and
+// a flag indicating if the attribute has a value.
+//
+// URL of the SQS queue used for graceful Spot instance interruption handling.
+// When set, HyperShift deploys the AWS Node Termination Handler in the hosted
+// control plane. Queue must be in the same region as the cluster.
+func (o *AWS) GetTerminationHandlerQueueUrl() (value string, ok bool) {
+	ok = o != nil && len(o.fieldSet_) > 21 && o.fieldSet_[21]
+	if ok {
+		value = o.terminationHandlerQueueUrl
 	}
 	return
 }

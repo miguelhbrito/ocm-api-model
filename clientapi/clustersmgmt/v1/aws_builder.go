@@ -40,9 +40,9 @@ type AWSBuilder struct {
 	privateHostedZoneRoleARN               string
 	privateLinkConfiguration               *PrivateLinkClusterConfigurationBuilder
 	secretAccessKey                        string
-	spotTerminationHandlerQueueUrl         string
 	subnetIDs                              []string
 	tags                                   map[string]string
+	terminationHandlerQueueUrl             string
 	vpcEndpointRoleArn                     string
 	zeroEgress                             *ZeroEgressBuilder
 	privateLink                            bool
@@ -294,16 +294,6 @@ func (b *AWSBuilder) SecretAccessKey(value string) *AWSBuilder {
 	return b
 }
 
-// SpotTerminationHandlerQueueUrl sets the value of the 'spot_termination_handler_queue_url' attribute to the given value.
-func (b *AWSBuilder) SpotTerminationHandlerQueueUrl(value string) *AWSBuilder {
-	if len(b.fieldSet_) == 0 {
-		b.fieldSet_ = make([]bool, 24)
-	}
-	b.spotTerminationHandlerQueueUrl = value
-	b.fieldSet_[19] = true
-	return b
-}
-
 // SubnetIDs sets the value of the 'subnet_IDs' attribute to the given values.
 func (b *AWSBuilder) SubnetIDs(values ...string) *AWSBuilder {
 	if len(b.fieldSet_) == 0 {
@@ -311,7 +301,7 @@ func (b *AWSBuilder) SubnetIDs(values ...string) *AWSBuilder {
 	}
 	b.subnetIDs = make([]string, len(values))
 	copy(b.subnetIDs, values)
-	b.fieldSet_[20] = true
+	b.fieldSet_[19] = true
 	return b
 }
 
@@ -322,10 +312,20 @@ func (b *AWSBuilder) Tags(value map[string]string) *AWSBuilder {
 	}
 	b.tags = value
 	if value != nil {
-		b.fieldSet_[21] = true
+		b.fieldSet_[20] = true
 	} else {
-		b.fieldSet_[21] = false
+		b.fieldSet_[20] = false
 	}
+	return b
+}
+
+// TerminationHandlerQueueUrl sets the value of the 'termination_handler_queue_url' attribute to the given value.
+func (b *AWSBuilder) TerminationHandlerQueueUrl(value string) *AWSBuilder {
+	if len(b.fieldSet_) == 0 {
+		b.fieldSet_ = make([]bool, 24)
+	}
+	b.terminationHandlerQueueUrl = value
+	b.fieldSet_[21] = true
 	return b
 }
 
@@ -423,7 +423,6 @@ func (b *AWSBuilder) Copy(object *AWS) *AWSBuilder {
 		b.privateLinkConfiguration = nil
 	}
 	b.secretAccessKey = object.secretAccessKey
-	b.spotTerminationHandlerQueueUrl = object.spotTerminationHandlerQueueUrl
 	if object.subnetIDs != nil {
 		b.subnetIDs = make([]string, len(object.subnetIDs))
 		copy(b.subnetIDs, object.subnetIDs)
@@ -438,6 +437,7 @@ func (b *AWSBuilder) Copy(object *AWS) *AWSBuilder {
 	} else {
 		b.tags = nil
 	}
+	b.terminationHandlerQueueUrl = object.terminationHandlerQueueUrl
 	b.vpcEndpointRoleArn = object.vpcEndpointRoleArn
 	if object.zeroEgress != nil {
 		b.zeroEgress = NewZeroEgress().Copy(object.zeroEgress)
@@ -510,7 +510,6 @@ func (b *AWSBuilder) Build() (object *AWS, err error) {
 		}
 	}
 	object.secretAccessKey = b.secretAccessKey
-	object.spotTerminationHandlerQueueUrl = b.spotTerminationHandlerQueueUrl
 	if b.subnetIDs != nil {
 		object.subnetIDs = make([]string, len(b.subnetIDs))
 		copy(object.subnetIDs, b.subnetIDs)
@@ -521,6 +520,7 @@ func (b *AWSBuilder) Build() (object *AWS, err error) {
 			object.tags[k] = v
 		}
 	}
+	object.terminationHandlerQueueUrl = b.terminationHandlerQueueUrl
 	object.vpcEndpointRoleArn = b.vpcEndpointRoleArn
 	if b.zeroEgress != nil {
 		object.zeroEgress, err = b.zeroEgress.Build()

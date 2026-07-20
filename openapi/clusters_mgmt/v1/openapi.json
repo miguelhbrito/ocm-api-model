@@ -14215,10 +14215,6 @@
             "description": "AWS secret access key.",
             "type": "string"
           },
-          "spot_termination_handler_queue_url": {
-            "description": "URL of the SQS queue used for graceful Spot instance interruption handling.\nWhen set, HyperShift deploys the AWS Node Termination Handler in the hosted\ncontrol plane. Queue must be in the same region as the cluster.",
-            "type": "string"
-          },
           "subnet_ids": {
             "description": "The subnet ids to be used when installing the cluster.",
             "type": "array",
@@ -14232,6 +14228,10 @@
             "additionalProperties": {
               "type": "string"
             }
+          },
+          "termination_handler_queue_url": {
+            "description": "URL of the SQS queue used for graceful Spot instance interruption handling.\nWhen set, HyperShift deploys the AWS Node Termination Handler in the hosted\ncontrol plane. Queue must be in the same region as the cluster.",
+            "type": "string"
           },
           "vpc_endpoint_role_arn": {
             "description": "Role ARN for VPC Endpoint Service cross account role.",
