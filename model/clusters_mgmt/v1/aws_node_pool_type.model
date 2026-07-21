@@ -54,5 +54,5 @@ class AWSNodePool {
 
     // Use spot instances on this node pool to reduce cost.
     @json(name = "spot_market_options")
-    SpotMarketOptions AWSSpotMarketOptions
+    SpotMarketOptions AwsNodePoolSpotMarketOptions
 }

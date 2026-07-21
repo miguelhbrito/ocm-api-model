@@ -155,7 +155,7 @@ func WriteAWSNodePool(object *AWSNodePool, stream *jsoniter.Stream) {
 			stream.WriteMore()
 		}
 		stream.WriteObjectField("spot_market_options")
-		WriteAWSSpotMarketOptions(object.spotMarketOptions, stream)
+		WriteAwsNodePoolSpotMarketOptions(object.spotMarketOptions, stream)
 		count++
 	}
 	present_ = len(object.fieldSet_) > 11 && object.fieldSet_[11] && object.subnetOutposts != nil
@@ -290,7 +290,7 @@ func ReadAWSNodePool(iterator *jsoniter.Iterator) *AWSNodePool {
 			object.rootVolume = value
 			object.fieldSet_[9] = true
 		case "spot_market_options":
-			value := ReadAWSSpotMarketOptions(iterator)
+			value := ReadAwsNodePoolSpotMarketOptions(iterator)
 			object.spotMarketOptions = value
 			object.fieldSet_[10] = true
 		case "subnet_outposts":

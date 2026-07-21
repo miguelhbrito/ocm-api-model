@@ -45,7 +45,7 @@ type AWSNodePool struct {
 	instanceProfile            string
 	instanceType               string
 	rootVolume                 *AWSVolume
-	spotMarketOptions          *AWSSpotMarketOptions
+	spotMarketOptions          *AwsNodePoolSpotMarketOptions
 	subnetOutposts             map[string]string
 	tags                       map[string]string
 }
@@ -282,7 +282,7 @@ func (o *AWSNodePool) GetRootVolume() (value *AWSVolume, ok bool) {
 // the zero value of the type if the attribute doesn't have a value.
 //
 // Use spot instances on this node pool to reduce cost.
-func (o *AWSNodePool) SpotMarketOptions() *AWSSpotMarketOptions {
+func (o *AWSNodePool) SpotMarketOptions() *AwsNodePoolSpotMarketOptions {
 	if o != nil && len(o.fieldSet_) > 10 && o.fieldSet_[10] {
 		return o.spotMarketOptions
 	}
@@ -293,7 +293,7 @@ func (o *AWSNodePool) SpotMarketOptions() *AWSSpotMarketOptions {
 // a flag indicating if the attribute has a value.
 //
 // Use spot instances on this node pool to reduce cost.
-func (o *AWSNodePool) GetSpotMarketOptions() (value *AWSSpotMarketOptions, ok bool) {
+func (o *AWSNodePool) GetSpotMarketOptions() (value *AwsNodePoolSpotMarketOptions, ok bool) {
 	ok = o != nil && len(o.fieldSet_) > 10 && o.fieldSet_[10]
 	if ok {
 		value = o.spotMarketOptions

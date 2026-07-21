@@ -14504,7 +14504,7 @@
           },
           "spot_market_options": {
             "description": "Use spot instances on this node pool to reduce cost.",
-            "$ref": "#/components/schemas/AWSSpotMarketOptions"
+            "$ref": "#/components/schemas/AwsNodePoolSpotMarketOptions"
           },
           "subnet_outposts": {
             "description": "Associates nodepool subnets with AWS Outposts.",
@@ -15987,6 +15987,27 @@
         "properties": {
           "kms_key_arn": {
             "description": "ARN of the KMS to be used for the etcd encryption",
+            "type": "string"
+          }
+        }
+      },
+      "AwsNodePoolSpotMarketOptions": {
+        "description": "Spot market options for AWS node pool.",
+        "properties": {
+          "kind": {
+            "description": "Indicates the type of this object. Will be 'AwsNodePoolSpotMarketOptions' if this is a complete object or 'AwsNodePoolSpotMarketOptionsLink' if it is just a link.",
+            "type": "string"
+          },
+          "id": {
+            "description": "Unique identifier of the object.",
+            "type": "string"
+          },
+          "href": {
+            "description": "Self link.",
+            "type": "string"
+          },
+          "max_price": {
+            "description": "The max price for spot instance. Optional.\nIf not set, use the on-demand price.",
             "type": "string"
           }
         }

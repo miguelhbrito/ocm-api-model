@@ -31,7 +31,7 @@ type AWSNodePoolBuilder struct {
 	instanceProfile            string
 	instanceType               string
 	rootVolume                 *AWSVolumeBuilder
-	spotMarketOptions          *AWSSpotMarketOptionsBuilder
+	spotMarketOptions          *AwsNodePoolSpotMarketOptionsBuilder
 	subnetOutposts             map[string]string
 	tags                       map[string]string
 }
@@ -177,8 +177,8 @@ func (b *AWSNodePoolBuilder) RootVolume(value *AWSVolumeBuilder) *AWSNodePoolBui
 
 // SpotMarketOptions sets the value of the 'spot_market_options' attribute to the given value.
 //
-// Spot market options for AWS machine pool.
-func (b *AWSNodePoolBuilder) SpotMarketOptions(value *AWSSpotMarketOptionsBuilder) *AWSNodePoolBuilder {
+// Spot market options for AWS node pool.
+func (b *AWSNodePoolBuilder) SpotMarketOptions(value *AwsNodePoolSpotMarketOptionsBuilder) *AWSNodePoolBuilder {
 	if len(b.fieldSet_) == 0 {
 		b.fieldSet_ = make([]bool, 13)
 	}
@@ -258,7 +258,7 @@ func (b *AWSNodePoolBuilder) Copy(object *AWSNodePool) *AWSNodePoolBuilder {
 		b.rootVolume = nil
 	}
 	if object.spotMarketOptions != nil {
-		b.spotMarketOptions = NewAWSSpotMarketOptions().Copy(object.spotMarketOptions)
+		b.spotMarketOptions = NewAwsNodePoolSpotMarketOptions().Copy(object.spotMarketOptions)
 	} else {
 		b.spotMarketOptions = nil
 	}
