@@ -14,20 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Manages a specific GCP firewall rule.
-resource GcpFirewallRule {
-
-	// Retrieves the details of the firewall rule.
+// Manages the status of GCP firewall rules.
+resource GcpFirewallRulesStatus {
+	// Retrieves the status of the firewall rules.
 	method Get {
-		out Body GcpFirewallRule
-	}
-
-	// Deletes the firewall rule.
-	method Delete {
-	}
-
-	// Reference to the status of this firewall rule.
-	locator Status {
-		target GcpFirewallRulesStatus
+		out Body GcpFirewallRulesStatus
 	}
 }
