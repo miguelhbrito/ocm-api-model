@@ -1,14 +1,7 @@
-# DO NOT EDIT; this file is auto-generated using https://github.com/openshift/ci-tools.
-# Fetched from https://github.com/openshift-online/ocm-service-common root OWNERS
-# If the repo had OWNERS_ALIASES then the aliases were expanded
-# Logins who are not members of 'openshift' organization were filtered out
 # See the OWNERS docs: https://git.k8s.io/community/contributors/guide/owners.md
 
 # to be significantly reduced once top-level architects decide API review shape
 approvers:
-- crizzo71
-- tzvatot
-- vkareh
 # ARO approvers
 - miguelsorianod
 # ROSA approvers
@@ -16,7 +9,6 @@ approvers:
 - lucasponce
 reviewers:
 - ahitacat
-- ciaranRoche
 - davidleerh
 - gdbranco
 - lucasponce
@@ -24,7 +16,5 @@ reviewers:
 - miguelsorianod
 - oriAdler
 - renan-campos
-- vkareh
 - zgalor
 - cristianoveiga
-- macgregor
