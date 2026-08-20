@@ -2,6 +2,9 @@
 
 This document describes the relevant changes between releases of the API model.
 
+## 0.0.466 Aug 20 2026
+- feat(arohcp): support specifying RHCOS marketplace image
+
 ## 0.0.465 Aug 19 2026
 - ROSAENG-13732 | feat: changes to support verification on BYO firewall
 - chore: Update OWNERS file
