@@ -4,9 +4,12 @@
 approvers:
 # ARO approvers
 - miguelsorianod
+- machi1990
 # ROSA approvers
 - robpblake
 - lucasponce
+- gdbranco
+- andreadecorte
 reviewers:
 - ahitacat
 - davidleerh
@@ -14,7 +17,6 @@ reviewers:
 - lucasponce
 - machi1990
 - miguelsorianod
-- oriAdler
 - renan-campos
 - zgalor
-- cristianoveiga
+- andreadecorte
